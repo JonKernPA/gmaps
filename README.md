@@ -13,9 +13,9 @@ which references a [quick tutorial on Youtube](http://www.youtube.com/watch?v=R0
 
 I created these steps so that I could be sure on the proper steps to get gmaps working.
 
-# Demo Steps
+## Demo Steps
 
-## Create New Rails App
+### Create New Rails App
 
 Bootstrap the rails app inside an RVM setup ([RVM](http://rvm.io/) is optional)
 
@@ -28,9 +28,9 @@ ruby-2.0.0-p247@gmaps ~/Nitrous.IO/jons-box-1/gmaps
 $ gem install rails
 ```
 
-## Create User Model
+### Create User Model
 
-The user will have lat.lon data
+The user will have lat/lon data
 
 ```ruby
 rails g scaffold User latitude:float longitude:float address:string description:string title:string
@@ -39,7 +39,7 @@ rake db:migrate
 
 ### Add Address Geocoding
 
-In Gemfile:
+In Gemfile, add:
 
 ```ruby
 gem 'geocoder'
@@ -48,14 +48,19 @@ gem 'geocoder'
 In routes.rb
 
 ```ruby
-root 'users#index'
+Gmaps::Application.routes.draw do
+  resources :users
+  root 'users#index'
+end
 ```
 
 In user.rb
 
 ```ruby
-geocoded_by :address
-after_validation :geocode
+class User < ActiveRecord::Base
+  geocoded_by :address
+  after_validation :geocode
+end
 ```
 
 Start Rails
@@ -65,13 +70,13 @@ $ bundle install
 rails s
 ```
 
-## Create a New User
+### Create a New User
 
 In the App, create a new user, add an address (for example, "New York, NY" -- do not enter a lat or lon), save new user.
 
 You should see lat/lon geocoded...
 
-## Add Gmaps4Rails
+### Add Gmaps4Rails
 
 In Gemfile
 
@@ -96,7 +101,7 @@ Add at the bottom of page:
 </div>
 ```
 
-### Javascript
+### Add Map Javascript
 
 Put the following at the top of the users/index.html.erb page
 
@@ -155,14 +160,14 @@ Note: this has dummy marker data at a lat/lon of 0,0 :-)
 </script>
 ```
 
-### Map Should be Visible
+### Assert: Map Should be Visible
 
 Refresh the view... Now you should see a map!
 
 If you don't see a map, something is wrong.
 
 
-## Generate Map Data
+### Generate Map Datapoints
 
 Add to the controller the generation of the mapping data points from the user records:
 
@@ -182,7 +187,7 @@ Replace the dummy marker data in the view script with data from the model:
 markers = handler.addMarkers(<%=raw @hash.to_json %>);
 ```
 
-### Map Should be Visible
+### Assert: Map Should be Visible
 
 Be sure to add a couple of User records with addresses (and verify the geocoding worked).
 
@@ -190,7 +195,7 @@ Refresh the users page.
 
 Now you should see a map with your user data points...
 
-If you do not see the inidividual user data points, then something wrong
+If you do not see the individual user data points, then something wrong
 
 
 
