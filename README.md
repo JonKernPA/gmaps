@@ -107,7 +107,7 @@ Put the following at the top of the users/index.html.erb page
 
 ```ruby
 <script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry" type="text/javascript"></script>
-<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" type="text/javascript"></script>
 ```
 
 ### Underscores.js
@@ -123,11 +123,15 @@ vendor/assets/javascripts/underscore.js
 
 ### Asset Pipeline
 
-Add to app/assets/javascripts/application.js
+Add underscore and gmaps to app/assets/javascripts/application.js
 
 ```ruby
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
 //= require underscore
 //= require gmaps/google
+//= require_tree .
 ```
 
 (leaving require_tree as last line)
@@ -172,13 +176,14 @@ If you don't see a map, something is wrong.
 Add to the controller the generation of the mapping data points from the user records:
 
 ```ruby
-def index
+  def index
     @users = User.all
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
+      marker.title user.title
     end
-end
+  end
 ```
 
 Replace the dummy marker data in the view script with data from the model:
