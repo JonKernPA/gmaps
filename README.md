@@ -200,7 +200,7 @@ Refresh the users page.
 
 Now you should see a map with your user data points...
 
-If you do not see the individual user data points, then something wrong
+If you do not see the individual user data points, then something is wrong. 
 
 
 
