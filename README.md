@@ -1,5 +1,13 @@
 # Google Maps for Rails Example App
 
+## Related GMaps4Rails Projects
+* [gmaps](https://github.com/JonKernPA/gmaps): Standard Rails4, ActiveRecord, standard UI
+* [gmaps_mongo](https://github.com/JonKernPA/gmaps_mongo): Rails4, MongoDB, standard UI
+
+## Tech Stack
+
+This application requires:
+
 * Ruby 2.0
 * Rails 4.0
 * ActiveRecord
@@ -200,7 +208,7 @@ Refresh the users page.
 
 Now you should see a map with your user data points...
 
-If you do not see the individual user data points, then something is wrong. 
+If you do not see the individual user data points, then something is wrong.
 
 
 
