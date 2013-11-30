@@ -53,7 +53,7 @@ In Gemfile, add:
 gem 'geocoder'
 ```
 
-In routes.rb
+In `routes.rb` add `root 'users#index'`
 
 ```ruby
 Gmaps::Application.routes.draw do
@@ -62,7 +62,7 @@ Gmaps::Application.routes.draw do
 end
 ```
 
-In user.rb
+In `user.rb` add the Geocoder bits
 
 ```ruby
 class User < ActiveRecord::Base
@@ -82,7 +82,7 @@ rails s
 
 In the App, create a new user, add an address (for example, "New York, NY" -- do not enter a lat or lon), save new user.
 
-You should see lat/lon geocoded...
+*Assert:* You should see lat/lon geocoded...
 
 ### Add Gmaps4Rails
 
@@ -99,7 +99,7 @@ rails s
 
 ### Add Map Div
 
-Inside users/index.html.erb
+Inside `users/index.html.erb`
 
 Add at the bottom of page:
 
@@ -111,7 +111,7 @@ Add at the bottom of page:
 
 ### Add Map Javascript
 
-Put the following at the top of the users/index.html.erb page
+Put the following at the top of the `users/index.html.erb` page
 
 ```
 <script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry" type="text/javascript"></script>
@@ -120,10 +120,10 @@ Put the following at the top of the users/index.html.erb page
 
 ### Underscores.js
 
-Visit http://underscorejs.org/underscore-min.js
+Visit [http://underscorejs.org/underscore-min.js](http://underscorejs.org/underscore-min.js).
 Select Production Version, copy all text or do right-click, Save As...
 
-Add this file under vendors as follows:
+Add this file under `vendor` as follows:
 
 ```ruby
 vendor/assets/javascripts/underscore.js
@@ -131,7 +131,7 @@ vendor/assets/javascripts/underscore.js
 
 ### Asset Pipeline
 
-Add underscore and gmaps to app/assets/javascripts/application.js
+Add underscore and gmaps to `app/assets/javascripts/application.js`
 
 ```ruby
 //= require jquery
@@ -142,7 +142,7 @@ Add underscore and gmaps to app/assets/javascripts/application.js
 //= require_tree .
 ```
 
-(leaving require_tree as last line)
+(leaving `require_tree .` as last line)
 
 ### Map Generation Script
 
@@ -181,7 +181,7 @@ If you don't see a map, something is wrong.
 
 ### Generate Map Datapoints
 
-Add to the controller the generation of the mapping data points from the user records:
+Add to the controller the generation of the mapping datapoints from the user records:
 
 ```ruby
   def index
@@ -206,9 +206,9 @@ Be sure to add a couple of User records with addresses (and verify the geocoding
 
 Refresh the users page.
 
-Now you should see a map with your user data points...
+Now you should see a map with your user datapoints...
 
-If you do not see the individual user data points, then something is wrong.
+If you do not see the individual user datapoints, then something is wrong.
 
 
 
