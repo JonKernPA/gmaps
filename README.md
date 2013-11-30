@@ -40,7 +40,7 @@ $ gem install rails
 
 The user will have lat/lon data
 
-```ruby
+```
 rails g scaffold User latitude:float longitude:float address:string description:string title:string
 rake db:migrate
 ```
@@ -73,8 +73,8 @@ end
 
 Start Rails
 
-```ruby
-$ bundle install
+```
+bundle install
 rails s
 ```
 
@@ -92,7 +92,7 @@ In Gemfile
 gem 'gmaps4rails'
 ```
 
-```ruby
+```
 bundle install
 rails s
 ```
@@ -103,7 +103,7 @@ Inside `users/index.html.erb`
 
 Add at the bottom of page:
 
-```ruby
+```erb
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
@@ -113,7 +113,7 @@ Add at the bottom of page:
 
 Put the following at the top of the `users/index.html.erb` page
 
-```
+```javascript
 <script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry" type="text/javascript"></script>
 <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" type="text/javascript"></script>
 ```
@@ -125,7 +125,7 @@ Select Production Version, copy all text or do right-click, Save As...
 
 Add this file under `vendor` as follows:
 
-```ruby
+```
 vendor/assets/javascripts/underscore.js
 ```
 
@@ -150,7 +150,7 @@ Add the map script to the bottom of the view, below the div.
 
 Note: this has dummy marker data at a lat/lon of 0,0 :-)
 
-```ruby
+```javascript
 <script type="text/javascript">
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
@@ -196,7 +196,7 @@ Add to the controller the generation of the mapping datapoints from the user rec
 
 Replace the dummy marker data in the view script with data from the model:
 
-```ruby
+```javascript
 markers = handler.addMarkers(<%=raw @hash.to_json %>);
 ```
 
