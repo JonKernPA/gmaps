@@ -3,6 +3,7 @@
 ## Related GMaps4Rails Projects
 * [gmaps](https://github.com/JonKernPA/gmaps): Standard Rails4, ActiveRecord, standard UI
 * [gmaps_mongo](https://github.com/JonKernPA/gmaps_mongo): Rails4, MongoDB, standard UI
+* [gmaps_zurb](https://github.com/JonKernPA/gmaps_zurb): Rails4, MongoDB, Zurb Foundation
 
 ## Tech Stack
 
