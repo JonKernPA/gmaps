@@ -1,4 +1,4 @@
-# Google Maps for Rails Example App
+## GMaps4Rails, ActiveRecord, Plain UI Example App
 
 ## Related GMaps4Rails Projects
 * [gmaps](https://github.com/JonKernPA/gmaps): Standard Rails4, ActiveRecord, standard UI
